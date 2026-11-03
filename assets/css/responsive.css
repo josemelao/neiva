@@ -1,0 +1,141 @@
+/* Media queries — sempre carregado por último */
+
+@media (max-width:1080px) {
+  .areas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dif-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero .wrap {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width:960px) {
+
+  .destaque .wrap,
+  .destaque .wrap.reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .destaque .wrap.reverse .reveal {
+    order: -1;
+  }
+
+  .sobre .wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .sobre-photo {
+    aspect-ratio: 16/9;
+    max-height: 360px;
+  }
+}
+
+@media (max-width:860px) {
+
+  nav,
+  .nav-cta .btn-outline {
+    display: none;
+  }
+
+  /* Menu mobile aberto */
+  nav.nav-open {
+    display: block;
+    position: absolute;
+    top: 78px;
+    left: 0;
+    right: 0;
+    background: rgba(254, 254, 252, .98);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--borda);
+    padding: 12px 0 20px;
+    z-index: 49;
+  }
+
+  nav.nav-open ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 0 24px;
+  }
+
+  nav.nav-open ul li a {
+    display: block;
+    padding: 14px 0;
+    font-size: 16px;
+    border-bottom: 1px solid var(--borda);
+  }
+
+  nav.nav-open ul li:last-child a {
+    border-bottom: none;
+  }
+
+  /* Animação hambúrguer → X */
+  .hamburger[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburger[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hero .wrap,
+  .destaque .wrap,
+  .destaque .wrap.reverse,
+  .sobre .wrap,
+  .contato-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-text-panel {
+    padding: 52px 24px;
+  }
+
+  .hero-photo-panel {
+    min-height: 340px;
+  }
+
+  .contato-divider {
+    margin: 44px auto;
+  }
+
+  .form-wrap {
+    margin-top: 0;
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .areas-grid,
+  .dif-grid,
+  .depo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 52px 0;
+  }
+
+  .sobre-lista div {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .whatsapp-float::before {
+    display: none;
+  }
+}

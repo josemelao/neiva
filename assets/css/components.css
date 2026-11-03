@@ -1,0 +1,657 @@
+/* Componentes: botões, cards, FAQ, carrossel, formulário, banner */
+
+/* Areas grid */
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 40px;
+}
+
+.area-card {
+  background: var(--branco);
+  padding: 30px 26px;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+  transition: transform .25s ease, box-shadow .25s ease;
+  position: relative;
+}
+
+.area-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-soft-hover);
+}
+
+.area-card .icon {
+  width: 30px;
+  height: 30px;
+  color: var(--verde-vivo);
+  margin-bottom: 16px;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.area-card .icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.area-card h3 {
+  font-size: 19px;
+  position: relative;
+  z-index: 1;
+}
+
+.area-card p {
+  font-size: 14.5px;
+  position: relative;
+  z-index: 1;
+}
+
+@property --border-p {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+.area-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(from 0deg, var(--verde-vivo) calc(var(--border-p)*3.6deg), transparent calc(var(--border-p)*3.6deg + .1deg));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  --border-p: 0;
+  transition: --border-p .7s ease;
+  pointer-events: none;
+}
+
+.area-card:hover::before {
+  --border-p: 100;
+}
+
+/* Diferenciais */
+.dif-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 44px;
+}
+
+.dif-item {
+  position: relative;
+  background: var(--branco);
+  border-radius: var(--radius-card);
+  padding: 30px 24px 26px;
+  box-shadow: var(--shadow-soft);
+  border-top: 3px solid var(--verde-agua);
+  overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+.dif-item:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-soft-hover);
+  border-color: var(--verde-vivo);
+}
+
+.dif-item .num {
+  position: absolute;
+  top: 2px;
+  right: 16px;
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: 58px;
+  color: var(--verde-agua-claro);
+  line-height: 1;
+  z-index: 0;
+  user-select: none;
+  transition: color .3s ease;
+}
+
+.dif-item:hover .num {
+  color: #DCEFE6;
+}
+
+.dif-item p {
+  position: relative;
+  z-index: 1;
+  font-size: 15.5px;
+  font-weight: 500;
+  color: var(--preto);
+  margin: 0;
+}
+
+.dif-item h3 {
+  position: relative;
+  z-index: 1;
+  font-size: 18px;
+  margin: 6px 0 8px;
+  color: var(--verde-profundo);
+}
+
+/* Depoimentos */
+.t-carousel {
+  position: relative;
+  max-width: 700px;
+  margin: 36px auto 0;
+}
+
+.t-viewport {
+  overflow: hidden;
+}
+
+.t-track {
+  display: flex;
+  transition: transform .85s cubic-bezier(.4, 0, .2, 1);
+}
+
+.t-slide {
+  flex: 0 0 100%;
+  text-align: center;
+  padding: 8px 56px;
+}
+
+.t-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--verde-agua-claro);
+  border: 2px solid var(--verde-agua);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--verde-profundo);
+}
+
+.t-quote {
+  font-family: var(--quote);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(19px, 2.1vw, 23px);
+  color: var(--verde-escuro);
+  line-height: 1.55;
+  max-width: none;
+}
+
+.t-author {
+  margin-top: 18px;
+  font-size: 13.5px;
+  color: var(--verde-agua);
+  font-weight: 600;
+  max-width: none;
+}
+
+.t-arrow {
+  position: absolute;
+  top: 38%;
+  transform: translateY(-50%);
+  background: var(--branco);
+  border: none;
+  box-shadow: var(--shadow-soft);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: var(--verde-escuro);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: box-shadow .2s ease;
+}
+
+.t-arrow:hover {
+  background: var(--verde-agua-claro);
+}
+
+.t-prev {
+  left: -6px;
+}
+
+.t-next {
+  right: -6px;
+}
+
+.t-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.t-dots button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--borda);
+  padding: 0;
+  cursor: pointer;
+}
+
+.t-dots button[aria-selected="true"] {
+  background: var(--verde-agua);
+}
+
+@media (max-width:600px) {
+  .t-slide {
+    padding: 8px 40px;
+  }
+
+  .t-prev {
+    left: -2px;
+  }
+
+  .t-next {
+    right: -2px;
+  }
+}
+
+/* FAQ */
+.faq-item {
+  background: var(--branco);
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.faq-item:last-child {
+  margin-bottom: 0;
+}
+
+.faq-q {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 20px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--preto);
+}
+
+.faq-q .plus {
+  font-size: 20px;
+  color: var(--verde-agua);
+  flex: none;
+  transition: transform .2s ease;
+}
+
+.faq-item.open .plus {
+  transform: rotate(45deg);
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .25s ease;
+}
+
+.faq-a p {
+  padding: 0 22px 22px;
+  font-size: 15px;
+}
+
+/* Formulário de contato */
+.form-box {
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+  padding: 36px;
+  background: var(--branco);
+}
+
+.form-box h3 {
+  font-size: 22px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-field {
+  margin-bottom: 16px;
+}
+
+.form-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--verde-escuro);
+  margin-bottom: 6px;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--preto);
+  background: var(--branco);
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: 2px solid var(--verde-agua);
+  outline-offset: 1px;
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+/* Consentimento LGPD no formulário */
+.form-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 4px 0 20px;
+  font-size: 13px;
+  color: var(--texto-suave);
+  line-height: 1.5;
+}
+
+.form-consent input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  accent-color: var(--verde-escuro);
+  flex: none;
+  cursor: pointer;
+}
+
+.form-consent label {
+  cursor: pointer;
+}
+
+.form-consent a {
+  color: var(--verde-escuro);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Banner de cookies (LGPD) */
+.cookie-banner {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 70;
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--verde-escuro);
+  color: var(--branco);
+  border-radius: var(--radius-card);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, .35);
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+.cookie-banner.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.cookie-banner p {
+  color: #D7E9E2;
+  font-size: 13.5px;
+  max-width: none;
+  margin: 0;
+}
+
+.cookie-banner a {
+  color: var(--branco);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.cookie-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cookie-actions .btn {
+  padding: 10px 18px;
+  font-size: 13.5px;
+}
+
+.cookie-actions .btn-primary {
+  background: var(--branco);
+  color: var(--verde-escuro);
+  box-shadow: none;
+}
+
+.cookie-actions .btn-primary:hover {
+  background: #ECF5F1;
+}
+
+.cookie-actions .btn-outline {
+  border-color: rgba(255, 255, 255, .4);
+  color: var(--branco);
+}
+
+.cookie-actions .btn-outline:hover {
+  background: rgba(255, 255, 255, .12);
+  color: var(--branco);
+}
+
+@media (max-width:480px) {
+  .cookie-banner {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 18px;
+  }
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 60;
+  background: var(--verde-escuro);
+  color: var(--branco);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .18);
+  transition: transform .28s cubic-bezier(.34, 1.56, .64, 1), box-shadow .28s ease, background .28s ease;
+}
+
+.whatsapp-float:hover,
+.whatsapp-float:focus-visible {
+  transform: scale(1.14);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .26);
+  background: #163a30;
+}
+
+.whatsapp-float svg {
+  width: 26px;
+  height: 26px;
+  transition: transform .28s ease;
+}
+
+.whatsapp-float:hover svg {
+  transform: rotate(-8deg);
+}
+
+.whatsapp-float::before {
+  content: 'Falar no WhatsApp';
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  background: var(--verde-escuro);
+  color: var(--branco);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 6px 12px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+  font-family: var(--sans);
+}
+
+.whatsapp-float:hover::before {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-float {
+    transition: none;
+  }
+
+  .whatsapp-float:hover,
+  .whatsapp-float:focus-visible {
+    transform: none;
+  }
+
+  .whatsapp-float:hover svg {
+    transform: none;
+  }
+
+  .area-card::before {
+    transition: none;
+  }
+}
+
+/* Revelação ao rolar */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-group>*:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.reveal-group>*:nth-child(2) {
+  transition-delay: .08s;
+}
+
+.reveal-group>*:nth-child(3) {
+  transition-delay: .16s;
+}
+
+.reveal-group>*:nth-child(4) {
+  transition-delay: .24s;
+}
+
+.reveal-group>*:nth-child(5) {
+  transition-delay: .32s;
+}
+
+.reveal-group>*:nth-child(6) {
+  transition-delay: .4s;
+}
+
+.reveal-group>*:nth-child(7) {
+  transition-delay: .44s;
+}
+
+.reveal-group>*:nth-child(8) {
+  transition-delay: .48s;
+}
+
+.reveal-group>*:nth-child(9) {
+  transition-delay: .52s;
+}
+
+.reveal-group>*:nth-child(10) {
+  transition-delay: .56s;
+}
+
+.reveal-group>*:nth-child(11) {
+  transition-delay: .6s;
+}
+
+.reveal-group>*:nth-child(12) {
+  transition-delay: .64s;
+}
+
+/* Fade de imagens quando carregam (usar em <img class="fade-in">) */
+img.fade-in {
+  opacity: 0;
+  transition: opacity .6s ease;
+}
+
+img.fade-in.loaded {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .reveal,
+  .reveal-group>* {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  img.fade-in {
+    opacity: 1 !important;
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Textos auxiliares do formulário */
+.form-intro {
+  margin-bottom: 20px;
+}
+
+.form-status {
+  margin-top: 14px;
+  font-size: 14px;
+}

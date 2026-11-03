@@ -1,0 +1,19 @@
+{
+  "name": "neiva-e2e",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Testes end-to-end e visuais do site Neiva Fernandes",
+  "scripts": {
+    "test": "playwright test",
+    "test:update": "playwright test --update-snapshots",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.56.0"
+  },
+  "dependencies": {
+    "pixelmatch": "^8.0.0",
+    "pngjs": "^7.0.0"
+  }
+}

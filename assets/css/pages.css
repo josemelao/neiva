@@ -1,0 +1,146 @@
+/* Página de privacidade — herda tokens e tipografia de base.css */
+
+body {
+  line-height: 1.7;
+}
+
+main a {
+  color: var(--verde-escuro);
+}
+
+/* Cabeçalho próprio, mais simples que o da home */
+header {
+  background: var(--branco);
+  border-bottom: 1px solid var(--borda);
+  padding: 20px 0;
+}
+
+header .wrap {
+  max-width: 1120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--verde-escuro);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--verde-agua), var(--verde-escuro) 75%);
+  flex: none;
+}
+
+.voltar {
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--texto-suave);
+}
+
+.voltar:hover {
+  color: var(--verde-escuro);
+}
+
+/* Conteúdo */
+main {
+  padding: 56px 0 88px;
+}
+
+main .wrap {
+  max-width: 780px;
+}
+
+main h1 {
+  font-size: clamp(28px, 4vw, 38px);
+  margin-bottom: 10px;
+  line-height: 1.15;
+  letter-spacing: normal;
+}
+
+.atualizado {
+  font-size: 13.5px;
+  color: var(--texto-suave);
+  margin-bottom: 40px;
+}
+
+main h2 {
+  font-size: 21px;
+  margin: 40px 0 12px;
+  line-height: 1.7;
+  letter-spacing: normal;
+}
+
+main p,
+main li {
+  font-size: 15.5px;
+  max-width: 68ch;
+  color: var(--texto-suave);
+}
+
+main p+p {
+  margin-top: 12px;
+}
+
+main ul {
+  margin: 12px 0 0 20px;
+}
+
+main li+li {
+  margin-top: 8px;
+}
+
+main strong {
+  color: var(--preto);
+}
+
+[data-confirmar] {
+  background: #FFF3CD;
+  color: #7A5B00;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.box {
+  background: var(--verde-agua-claro);
+  border-radius: var(--radius-card);
+  padding: 22px 24px;
+  margin-top: 40px;
+}
+
+.box h2 {
+  margin-top: 0;
+}
+
+.box a {
+  font-weight: 600;
+}
+
+footer {
+  background: var(--preto);
+  color: #9FB3AC;
+  padding: 32px 0;
+  font-size: 13px;
+  text-align: center;
+}
+
+footer .wrap {
+  max-width: 780px;
+}
+
+footer a {
+  color: #C9DED6;
+}
