@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Clínica Neiva Fernandes">
+  <rect width="32" height="32" rx="8" fill="#1E4A3D"/>
+  <circle cx="16" cy="16" r="10.5" fill="none" stroke="#FEFEFC" stroke-width="1.4" opacity=".6"/>
+  <path d="M11.6 20.4V11.6L20.4 20.4V11.6" fill="none" stroke="#FEFEFC" stroke-width="1.9"
+    stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -36,9 +36,13 @@ test.describe('regressão — estrutura e navegação', () => {
   test('não há rolagem horizontal em 360px', async ({ page }) => {
     await page.setViewportSize({ width: 360, height: 800 });
     await page.goto('/', { waitUntil: 'networkidle' });
-    const overflow = await page.evaluate(
-      () => document.documentElement.scrollWidth - window.innerWidth
-    );
+    // Em emulação mobile o navegador alarga o layout viewport quando o
+    // conteúdo estoura; por isso comparamos também com o viewport pedido.
+    const { overflow, viewportExtra } = await page.evaluate(() => ({
+      overflow: document.documentElement.scrollWidth - window.innerWidth,
+      viewportExtra: window.innerWidth - 360,
+    }));
+    expect(viewportExtra, 'layout viewport alargado por conteúdo').toBeLessThanOrEqual(1);
     expect(overflow, 'px de overflow horizontal').toBeLessThanOrEqual(1);
   });
 });
@@ -63,13 +67,14 @@ test.describe('regressão — componentes interativos', () => {
     await page.goto('/', { waitUntil: 'networkidle' });
     const dots = page.locator('.t-dots button');
     await expect(dots).toHaveCount(6);
-    await expect(dots.nth(0)).toHaveAttribute('aria-selected', 'true');
+    await expect(dots.nth(0)).toHaveAttribute('aria-current', 'true');
 
     await page.locator('.t-next').click();
-    await expect(dots.nth(1)).toHaveAttribute('aria-selected', 'true');
+    await expect(dots.nth(1)).toHaveAttribute('aria-current', 'true');
+    await expect(dots.nth(0)).not.toHaveAttribute('aria-current', 'true');
 
     await page.locator('.t-prev').click();
-    await expect(dots.nth(0)).toHaveAttribute('aria-selected', 'true');
+    await expect(dots.nth(0)).toHaveAttribute('aria-current', 'true');
   });
 
   test('banner de cookies aparece, aceita e permanece aceito', async ({ page, context }) => {
@@ -96,6 +101,67 @@ test.describe('regressão — componentes interativos', () => {
       await expect(links.nth(i)).toHaveAttribute('href', /wa\.me\/5561981729598/);
     }
   });
+
+  test('formulário monta a mensagem e abre o WhatsApp', async ({ page, context }) => {
+    await context.addInitScript(() => {
+      try {
+        localStorage.setItem('nf_cookie_consent', 'aceito');
+      } catch {
+        /* storage indisponível */
+      }
+    });
+    await context.route(/wa\.me/, (route) =>
+      route.fulfill({ status: 200, contentType: 'text/html', body: '<p>WhatsApp</p>' })
+    );
+
+    await page.goto('/', { waitUntil: 'networkidle' });
+    await expect(page.locator('#form-contato')).not.toHaveAttribute('action', /web3forms/);
+    await page.fill('#f-nome', 'Maria Teste');
+    await page.fill('#f-whats', '(61) 99999-0000');
+    await page.fill('#f-email', 'maria@example.com');
+    await page.fill('#f-msg', 'Gostaria de saber sobre pós-operatório.');
+    await page.check('#f-consent');
+
+    const popupPromise = page.waitForEvent('popup');
+    await page.locator('#form-contato button[type="submit"]').click();
+    const popup = await popupPromise;
+    await popup.waitForLoadState('domcontentloaded');
+
+    const url = popup.url();
+    expect(url).toContain('https://wa.me/5561981729598?text=');
+    const texto = decodeURIComponent(url.split('text=')[1]);
+    expect(texto).toContain('Maria Teste');
+    expect(texto).toContain('(61) 99999-0000');
+    expect(texto).toContain('maria@example.com');
+    expect(texto).toContain('pós-operatório');
+
+    await expect(page.locator('#form-status')).toContainText('WhatsApp');
+  });
+});
+
+test.describe('progressive enhancement', () => {
+  test.use({ javaScriptEnabled: false });
+
+  test('sem JavaScript o conteúdo continua visível', async ({ page }) => {
+    await page.goto('/', { waitUntil: 'load' });
+    await expect(page.locator('h1')).toBeVisible();
+    await expect(page.locator('#contato')).toBeVisible();
+    const opacities = await page
+      .locator('.reveal')
+      .evaluateAll((els) => els.map((el) => getComputedStyle(el).opacity));
+    expect(opacities.length).toBeGreaterThan(0);
+    expect(new Set(opacities)).toEqual(new Set(['1']));
+  });
+});
+
+test.describe('aviso de demonstração', () => {
+  for (const url of ['/', '/privacidade.html']) {
+    test(`aparece em ${url}`, async ({ page }) => {
+      await page.goto(url, { waitUntil: 'networkidle' });
+      await expect(page.locator('.demo-banner')).toBeVisible();
+      await expect(page.locator('.demo-banner')).toContainText(/ilustrativ/i);
+    });
+  }
 });
 
 test.describe('regressão — menu mobile', () => {
@@ -121,5 +187,16 @@ test.describe('regressão — privacidade', () => {
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
     await page.locator('a.voltar').click();
     await expect(page).toHaveURL(/index\.html$|\/$/);
+  });
+
+  test('não há rolagem horizontal em 360px', async ({ page }) => {
+    await page.setViewportSize({ width: 360, height: 800 });
+    await page.goto('/privacidade.html', { waitUntil: 'networkidle' });
+    const { overflow, viewportExtra } = await page.evaluate(() => ({
+      overflow: document.documentElement.scrollWidth - window.innerWidth,
+      viewportExtra: window.innerWidth - 360,
+    }));
+    expect(viewportExtra, 'layout viewport alargado por conteúdo').toBeLessThanOrEqual(1);
+    expect(overflow, 'px de overflow horizontal').toBeLessThanOrEqual(1);
   });
 });

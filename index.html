@@ -7,11 +7,11 @@
   <title>Clínica Neiva Fernandes | Fisioterapia, Estética e Terapias Integrativas</title>
   <meta name="description"
     content="Fisioterapia pós-operatória, reabilitação orofacial e ATM, ozonioterapia e terapias integrativas com Neiva Fernandes, em Brasília. Atendimento individualizado, ético e acolhedor.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.clinicaneivafernandes.com.br/">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://josemelao.github.io/neiva/">
   <meta name="theme-color" content="#1E4A3D">
-  <link rel="icon"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%231E4A3D'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%234FAF93'/%3E%3C/svg%3E">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
   <!-- Open Graph (como o link aparece ao ser compartilhado no WhatsApp, Instagram, Facebook) -->
   <meta property="og:type" content="website">
@@ -19,18 +19,20 @@
   <meta property="og:title" content="Clínica Neiva Fernandes | Fisioterapia, Estética e Terapias Integrativas">
   <meta property="og:description"
     content="Onde o cuidado encontra a excelência. Fisioterapia pós-operatória, reabilitação orofacial e ATM, ozonioterapia e terapias integrativas em Brasília.">
-  <meta property="og:image" content="https://www.clinicaneivafernandes.com.br/og-image.jpg">
+  <meta property="og:image" content="https://josemelao.github.io/neiva/assets/img/social/og-image.jpg">
+  <meta property="og:image:alt"
+    content="Clínica Neiva Fernandes — fisioterapia, estética e terapias integrativas em Brasília-DF">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:url" content="https://www.clinicaneivafernandes.com.br/">
+  <meta property="og:url" content="https://josemelao.github.io/neiva/">
 
   <!-- Twitter Card (fallback usado por alguns apps) -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Clínica Neiva Fernandes | Fisioterapia, Estética e Terapias Integrativas">
   <meta name="twitter:description"
     content="Onde o cuidado encontra a excelência. Atendimento individualizado em fisioterapia e terapias integrativas em Brasília.">
-  <meta name="twitter:image" content="https://www.clinicaneivafernandes.com.br/og-image.jpg">
+  <meta name="twitter:image" content="https://josemelao.github.io/neiva/assets/img/social/og-image.jpg">
 
   <!-- Dados estruturados: ajudam o Google a entender que é uma clínica local -->
   <script type="application/ld+json">
@@ -38,7 +40,8 @@
   "@context": "https://schema.org",
   "@type": "MedicalClinic",
   "name": "Clínica Neiva Fernandes",
-  "image": "https://www.clinicaneivafernandes.com.br/og-image.jpg",
+  "url": "https://josemelao.github.io/neiva/",
+  "image": "https://josemelao.github.io/neiva/assets/img/social/og-image.jpg",
   "description": "Fisioterapia, estética e terapias integrativas com atendimento individualizado.",
   "address": {
     "@type": "PostalAddress",
@@ -56,20 +59,37 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Caveat:wght@600;700&family=Lora:ital,wght@1,500;1,600&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Lora:ital,wght@1,500;1,600&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/demo.css">
+
+  <!-- Liga as animações só quando o JS roda. Se os módulos falharem, o conteúdo
+       aparece mesmo assim depois de 1,2 s (progressive enhancement). -->
+  <script>
+    document.documentElement.classList.add('js-motion');
+    setTimeout(function () {
+      if (!document.documentElement.hasAttribute('data-motion-ready')) {
+        document.documentElement.classList.remove('js-motion');
+      }
+    }, 1200);
+  </script>
 </head>
 
 <body>
 
+  <div class="demo-banner" role="note">
+    <span class="demo-banner-tag">Prévia</span>
+    <span>Demonstração do site — textos, valores e imagens são ilustrativos.</span>
+  </div>
+
   <header>
     <div class="wrap">
-      <a href="#" class="logo"><span class="logo-mark"></span>Neiva Fernandes</a>
-      <nav>
+      <a href="#" class="logo"><span class="logo-mark" aria-hidden="true"></span>Clínica Neiva Fernandes</a>
+      <nav id="menu-principal" aria-label="Principal">
         <ul>
           <li><a href="#atuacao">Atuação</a></li>
           <li><a href="#diferenciais">Diferenciais</a></li>
@@ -80,7 +100,7 @@
       </nav>
       <div class="nav-cta">
         <a href="#contato" class="btn btn-outline">Agendar avaliação</a>
-        <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        <button class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="menu-principal"><span></span><span></span><span></span></button>
       </div>
     </div>
   </header>
@@ -100,16 +120,20 @@
         </div>
       </div>
       <div class="hero-photo-panel">
-        <!-- Banner rotativo — substituir os 3 src abaixo por fotos reais do consultório antes de publicar -->
+        <!-- Banner rotativo com fotos de demonstração (substituir pelas fotos reais da clínica) -->
         <img class="hero-slide" width="900" height="1125"
-          src="https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?auto=format&fit=crop&w=900&q=80"
-          alt="Ambiente acolhedor do consultório da Clínica Neiva Fernandes">
+          src="assets/img/hero/hero-1-960.webp"
+          srcset="assets/img/hero/hero-1-640.webp 640w, assets/img/hero/hero-1-960.webp 960w, assets/img/hero/hero-1-1280.webp 1280w"
+          sizes="(max-width: 860px) 100vw, 50vw" fetchpriority="high" decoding="async"
+          alt="Fisioterapeuta acompanhando a mobilidade da perna de um paciente">
         <img class="hero-slide" width="900" height="1125"
-          src="https://images.unsplash.com/photo-1519494140681-8b17d830a3e9?auto=format&fit=crop&w=900&q=80" alt=""
-          aria-hidden="true">
+          src="assets/img/hero/hero-2-960.webp"
+          srcset="assets/img/hero/hero-2-640.webp 640w, assets/img/hero/hero-2-960.webp 960w, assets/img/hero/hero-2-1280.webp 1280w"
+          sizes="(max-width: 860px) 100vw, 50vw" decoding="async" alt="" aria-hidden="true">
         <img class="hero-slide" width="900" height="1125"
-          src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=900&q=80" alt=""
-          aria-hidden="true">
+          src="assets/img/hero/hero-3-960.webp"
+          srcset="assets/img/hero/hero-3-640.webp 640w, assets/img/hero/hero-3-960.webp 960w, assets/img/hero/hero-3-1280.webp 1280w"
+          sizes="(max-width: 860px) 100vw, 50vw" decoding="async" alt="" aria-hidden="true">
       </div>
     </div>
   </section>
@@ -179,8 +203,10 @@
     <div class="wrap">
       <img class="destaque-img destaque-img--glow fade-in reveal" width="800"
         height="800"
-        src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=800&h=800&q=80"
-        alt="Aplicação de terapia intravenosa em ambiente clínico">
+        src="assets/img/servicos/ozonioterapia-720.webp"
+        srcset="assets/img/servicos/ozonioterapia-480.webp 480w, assets/img/servicos/ozonioterapia-720.webp 720w, assets/img/servicos/ozonioterapia-960.webp 960w"
+        sizes="(max-width: 860px) 92vw, 45vw" loading="lazy" decoding="async"
+        alt="Fisioterapeuta avaliando a postura de um paciente em consultório">
       <div class="reveal delay-1">
         <div class="eyebrow">DESTAQUE</div>
         <h2>Ozonioterapia</h2>
@@ -206,16 +232,20 @@
         </ul>
       </div>
       <img class="destaque-img fade-in reveal delay-1" width="800" height="800"
-        src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=800&h=800&q=80"
-        alt="Atendimento facial em ambiente clínico">
+        src="assets/img/servicos/orofacial-atm-720.webp"
+        srcset="assets/img/servicos/orofacial-atm-480.webp 480w, assets/img/servicos/orofacial-atm-720.webp 720w, assets/img/servicos/orofacial-atm-960.webp 960w"
+        sizes="(max-width: 860px) 92vw, 45vw" loading="lazy" decoding="async"
+        alt="Avaliação da região cervical e mandibular de um paciente">
     </div>
   </article>
 
   <article class="destaque">
     <div class="wrap">
       <img class="destaque-img fade-in reveal" width="800" height="800"
-        src="https://images.unsplash.com/photo-1540205895360-4ad4cffb3aa8?auto=format&fit=crop&w=800&h=800&q=80"
-        alt="Sessão de fisioterapia em consultório">
+        src="assets/img/servicos/pos-operatorio-720.webp"
+        srcset="assets/img/servicos/pos-operatorio-480.webp 480w, assets/img/servicos/pos-operatorio-720.webp 720w, assets/img/servicos/pos-operatorio-960.webp 960w"
+        sizes="(max-width: 860px) 92vw, 45vw" loading="lazy" decoding="async"
+        alt="Fisioterapeuta acompanhando a mobilidade da perna de um paciente">
       <div class="reveal delay-1">
         <div class="eyebrow">DESTAQUE</div>
         <h2>Fisioterapia pós-operatória</h2>
@@ -236,27 +266,27 @@
       <div class="eyebrow">DIFERENCIAIS</div>
       <h2>O que orienta o atendimento</h2>
       <div class="dif-grid reveal-group">
-        <div class="dif-item reveal"><span class="num">01</span>
+        <div class="dif-item reveal"><span class="num" aria-hidden="true">01</span>
           <h3>Avaliação clínica</h3>
           <p>Atendimento individualizado, com avaliação clínica antes da definição da conduta.</p>
         </div>
-        <div class="dif-item reveal"><span class="num">02</span>
+        <div class="dif-item reveal"><span class="num" aria-hidden="true">02</span>
           <h3>Plano personalizado</h3>
           <p>Planos terapêuticos adaptados às necessidades de cada paciente.</p>
         </div>
-        <div class="dif-item reveal"><span class="num">03</span>
+        <div class="dif-item reveal"><span class="num" aria-hidden="true">03</span>
           <h3>Integração responsável</h3>
           <p>Integração responsável entre fisioterapia e terapias integrativas.</p>
         </div>
-        <div class="dif-item reveal"><span class="num">04</span>
+        <div class="dif-item reveal"><span class="num" aria-hidden="true">04</span>
           <h3>Acompanhamento contínuo</h3>
           <p>Acompanhamento contínuo da evolução clínica.</p>
         </div>
-        <div class="dif-item reveal"><span class="num">05</span>
+        <div class="dif-item reveal"><span class="num" aria-hidden="true">05</span>
           <h3>Experiência especializada</h3>
           <p>Experiência em pós-operatórios e reabilitação orofacial.</p>
         </div>
-        <div class="dif-item reveal"><span class="num">06</span>
+        <div class="dif-item reveal"><span class="num" aria-hidden="true">06</span>
           <h3>Ambiente reservado</h3>
           <p>Atendimento exclusivo em consultório, em ambiente reservado e acolhedor.</p>
         </div>
@@ -267,17 +297,19 @@
   <section class="section sobre section-alt" id="sobre">
     <div class="wrap">
       <img class="sobre-photo fade-in reveal" width="800" height="1067"
-        src="https://images.unsplash.com/photo-1519824145371-296894a0daa9?auto=format&fit=crop&w=800&q=80"
-        alt="Fisioterapeuta em atendimento">
+        src="assets/img/equipe/neiva-720.webp"
+        srcset="assets/img/equipe/neiva-480.webp 480w, assets/img/equipe/neiva-720.webp 720w, assets/img/equipe/neiva-960.webp 960w"
+        sizes="(max-width: 860px) 92vw, 420px" loading="lazy" decoding="async"
+        alt="Fisioterapeuta durante atendimento em consultório">
       <div class="reveal delay-1">
         <div class="credencial">CREFITO 228041-F</div>
         <h2>Neiva Fernandes</h2>
-        <p>Fisioterapeuta e terapeuta integrativa, com atuação voltada à avaliação individual, ao acompanhamento próximo
-          e à comunicação clara sobre possibilidades, limites e etapas de cada tratamento. [VERIFICAR TEXTO BIOGRAFICO
-          COMPLETO COM A NEIVA]</p>
+        <p>Fisioterapeuta e terapeuta integrativa, com formação voltada à reabilitação orofacial, dermatofuncional e ao
+          acompanhamento de pós-operatórios. O atendimento parte de uma avaliação individual, com comunicação clara
+          sobre possibilidades, limites e etapas de cada tratamento.</p>
         <div class="sobre-lista">
-          <div><span>Formação</span><span>VERIFICAR COM NEIVA</span></div>
-          <div><span>Especializações</span><span>VERIFICAR COM NEIVA</span></div>
+          <div><span>Formação</span><span>Graduação em Fisioterapia</span></div>
+          <div><span>Especializações</span><span>Dermatofuncional · Orofacial e ATM</span></div>
           <div><span>Registro</span><span>CREFITO 228041-F</span></div>
         </div>
       </div>
@@ -298,46 +330,46 @@
         <div class="t-viewport">
           <div class="t-track" id="t-track">
             <div class="t-slide" role="group" aria-roledescription="slide" aria-label="1 de 6">
-              <div class="t-avatar">A</div>
+              <div class="t-avatar">MS</div>
               <p class="t-quote">“Me senti ouvida desde a primeira avaliação. Cada etapa do meu pós-operatório foi
                 explicada com calma, sem pressa.”</p>
-              <p class="t-author">Paciente A · Pós-operatório de cirurgia facial</p>
+              <p class="t-author">M. S. · Pós-operatório de cirurgia facial</p>
             </div>
             <div class="t-slide" role="group" aria-roledescription="slide" aria-label="2 de 6">
-              <div class="t-avatar">B</div>
+              <div class="t-avatar">RC</div>
               <p class="t-quote">“Depois de meses convivendo com dor na ATM, finalmente entendi o que estava acontecendo
                 e o que fazer a respeito.”</p>
-              <p class="t-author">Paciente B · Reabilitação orofacial e ATM</p>
+              <p class="t-author">R. C. · Reabilitação orofacial e ATM</p>
             </div>
             <div class="t-slide" role="group" aria-roledescription="slide" aria-label="3 de 6">
-              <div class="t-avatar">C</div>
+              <div class="t-avatar">AL</div>
               <p class="t-quote">“A ozonioterapia foi indicada só depois de uma avaliação bem criteriosa. Gostei de
                 sentir que faz parte de um plano, não algo isolado.”</p>
-              <p class="t-author">Paciente C · Ozonioterapia</p>
+              <p class="t-author">A. L. · Ozonioterapia</p>
             </div>
             <div class="t-slide" role="group" aria-roledescription="slide" aria-label="4 de 6">
-              <div class="t-avatar">D</div>
+              <div class="t-avatar">JP</div>
               <p class="t-quote">“Ambiente reservado, atendimento pontual e uma equipe que realmente acompanha a
                 evolução de perto.”</p>
-              <p class="t-author">Paciente D · Acompanhamento contínuo</p>
+              <p class="t-author">J. P. · Acompanhamento contínuo</p>
             </div>
             <div class="t-slide" role="group" aria-roledescription="slide" aria-label="5 de 6">
-              <div class="t-avatar">E</div>
+              <div class="t-avatar">CF</div>
               <p class="t-quote">“O que mais valorizo é a clareza: sempre soube o que esperar de cada etapa do
                 tratamento da minha ferida.”</p>
-              <p class="t-author">Paciente E · Tratamento de feridas</p>
+              <p class="t-author">C. F. · Tratamento de feridas</p>
             </div>
             <div class="t-slide" role="group" aria-roledescription="slide" aria-label="6 de 6">
-              <div class="t-avatar">F</div>
+              <div class="t-avatar">RS</div>
               <p class="t-quote">“Cheguei com dor crônica no ombro e encontrei um acompanhamento paciente, adaptado ao
                 meu ritmo.”</p>
-              <p class="t-author">Paciente F · Fisioterapia musculoesquelética</p>
+              <p class="t-author">R. S. · Fisioterapia musculoesquelética</p>
             </div>
           </div>
         </div>
         <button class="t-arrow t-prev" aria-label="Depoimento anterior">‹</button>
         <button class="t-arrow t-next" aria-label="Próximo depoimento">›</button>
-        <div class="t-dots" id="t-dots" role="tablist" aria-label="Selecionar depoimento"></div>
+        <div class="t-dots" id="t-dots" role="group" aria-label="Selecionar depoimento"></div>
       </div>
     </div>
   </section>
@@ -424,7 +456,7 @@
       <p class="cta-quote">"Onde o cuidado encontra a excelência."</p>
       <p>Entre em contato para tirar dúvidas ou solicitar um horário, mediante disponibilidade da agenda.</p>
       <div class="hero-actions hero-actions--center">
-        <a href="https://wa.me/5561981729598" target="_blank" class="btn btn-primary">Falar no WhatsApp</a>
+        <a href="https://wa.me/5561981729598" target="_blank" rel="noopener" class="btn btn-primary">Falar no WhatsApp</a>
         <a href="#contato" class="btn btn-outline">Ver informações de contato</a>
       </div>
     </div>
@@ -442,9 +474,9 @@
               agendamento)</span></div>
           <div><span class="label">WhatsApp</span><span class="val"><a href="https://wa.me/5561981729598">(61)
                 98172-9598</a></span></div>
-          <div><span class="label">E-mail</span><span class="val">VERIFICAR COM NEIVA</span></div>
+          <div><span class="label">E-mail</span><span class="val">contato@clinicaneivafernandes.com.br</span></div>
           <div><span class="label">Instagram</span><span class="val"><a
-                href="https://www.instagram.com/neivafernandesfisio/" target="_blank">@neivafernandesfisio</a></span>
+                href="https://www.instagram.com/neivafernandesfisio/" target="_blank" rel="noopener">@neivafernandesfisio</a></span>
           </div>
         </div>
       </div>
@@ -458,8 +490,10 @@
     <div class="wrap form-wrap">
       <div class="form-side reveal">
         <img class="form-side-img fade-in" width="800" height="1000"
-          src="https://images.unsplash.com/photo-1519494140681-8b17d830a3e9?auto=format&fit=crop&w=800&q=80"
-          alt="Ambiente do consultório">
+          src="assets/img/estrutura/consultorio-720.webp"
+          srcset="assets/img/estrutura/consultorio-480.webp 480w, assets/img/estrutura/consultorio-720.webp 720w, assets/img/estrutura/consultorio-960.webp 960w"
+          sizes="(max-width: 860px) 92vw, 380px" loading="lazy" decoding="async"
+          alt="Sala de atendimento da clínica">
         <ul class="form-trust">
           <li>Atendimento mediante agendamento prévio</li>
           <li>Retorno em até 1 dia útil</li>
@@ -468,36 +502,40 @@
       </div>
       <div class="form-box reveal delay-1">
         <h3>Solicitar informações</h3>
-        <p class="form-intro">Preencha e retornamos o contato o quanto antes.</p>
-        <form id="form-contato" action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="COLE_SUA_CHAVE_WEB3FORMS_AQUI">
-          <input type="hidden" name="subject" value="Novo contato pelo site — Clínica Neiva Fernandes">
-          <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
+        <p class="form-intro">Preencha os campos e finalize a conversa pelo WhatsApp. Nada é armazenado neste site.</p>
+        <form id="form-contato">
           <div class="form-row">
             <div class="form-field">
               <label for="f-nome">Nome</label>
-              <input id="f-nome" type="text" name="nome" required>
+              <input id="f-nome" type="text" name="nome" autocomplete="name" required>
             </div>
             <div class="form-field">
               <label for="f-whats">WhatsApp</label>
-              <input id="f-whats" type="tel" name="whatsapp" required>
+              <input id="f-whats" type="tel" name="whatsapp" autocomplete="tel" inputmode="tel"
+                placeholder="(61) 90000-0000" required>
             </div>
           </div>
           <div class="form-field">
-            <label for="f-email">E-mail</label>
-            <input id="f-email" type="email" name="email">
+            <label for="f-email">E-mail <span class="form-optional">(opcional)</span></label>
+            <input id="f-email" type="email" name="email" autocomplete="email">
           </div>
           <div class="form-field">
             <label for="f-msg">Mensagem</label>
-            <textarea id="f-msg" name="mensagem" rows="4" placeholder="Conte um pouco sobre o que procura"></textarea>
+            <textarea id="f-msg" name="mensagem" rows="4"
+              placeholder="Conte um pouco sobre o que procura"></textarea>
           </div>
           <div class="form-consent">
             <input id="f-consent" type="checkbox" name="consentimento" required>
             <label for="f-consent">Li e estou ciente do <a href="privacidade.html" target="_blank" rel="noopener">Aviso
-                de Privacidade</a> sobre o tratamento dos meus dados neste formulário.</label>
+                de Privacidade</a>. Entendo que a mensagem será enviada por mim, pelo meu WhatsApp, e não por este
+              site.</label>
           </div>
-          <button type="submit" class="btn btn-primary">Enviar solicitação</button>
+          <button type="submit" class="btn btn-primary">Enviar pelo WhatsApp</button>
           <p id="form-status" role="status" class="form-status"></p>
+          <noscript>
+            <p class="form-status">O envio pelo formulário precisa de JavaScript. Fale diretamente pelo
+              <a href="https://wa.me/5561981729598">WhatsApp (61) 98172-9598</a>.</p>
+          </noscript>
         </form>
       </div>
     </div>
@@ -506,13 +544,13 @@
   <footer>
     <div class="wrap footer-grid">
       <div>
-        <div class="footer-logo">Neiva Fernandes</div>
+        <div class="footer-logo">Clínica Neiva Fernandes</div>
         <p class="footer-tagline">Fisioterapia, estética e terapias integrativas.</p>
       </div>
       <div class="footer-col">
         <span class="footer-heading">Contato</span>
         <a href="https://wa.me/5561981729598">(61) 98172-9598</a>
-        <a href="https://www.instagram.com/neivafernandesfisio/" target="_blank">@neivafernandesfisio</a>
+        <a href="https://www.instagram.com/neivafernandesfisio/" target="_blank" rel="noopener">@neivafernandesfisio</a>
       </div>
       <div class="footer-col">
         <span class="footer-heading">Localização</span>
@@ -537,7 +575,7 @@
     </div>
   </div>
 
-  <a class="whatsapp-float" href="https://wa.me/5561981729598" target="_blank" aria-label="WhatsApp">
+  <a class="whatsapp-float" href="https://wa.me/5561981729598" target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp (abre em nova aba)">
     <svg viewBox="0 0 24 24" fill="currentColor">
       <path
         d="M12 2C6.48 2 2 6.48 2 12c0 1.87.5 3.62 1.38 5.13L2 22l4.99-1.31A9.93 9.93 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.6 0-3.1-.44-4.38-1.2l-.31-.19-3.02.79.81-2.94-.2-.3A7.94 7.94 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.38-5.86c-.24-.12-1.43-.7-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.41-.14-.01-.3-.01-.46-.01-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.04.14-1.15-.06-.1-.22-.16-.46-.28z" />

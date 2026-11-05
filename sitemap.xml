@@ -1,37 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Prévia comercial: URLs do ambiente de demonstração.
+       Trocar por https://www.dominio-final.com.br/ antes de publicar. -->
   <url>
-    <loc>https://www.institutoneivafernandes.com.br/</loc>
-    <lastmod>2026-09-25</lastmod>
+    <loc>https://josemelao.github.io/neiva/</loc>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!--
-    A página privacidade.html foi deixada de fora de propósito: ela tem
+    privacidade.html fica de fora de propósito: a página tem
     <meta name="robots" content="noindex, follow">, então não deve
-    aparecer no sitemap (evita mandar sinal contraditório pro Google).
+    aparecer no sitemap (evita sinal contraditório para o Google).
 
-    Quando novas páginas forem publicadas — ex: uma por serviço
+    Quando novas páginas forem publicadas — uma por serviço
     (ozonioterapia, reabilitação orofacial, pós-operatório...) ou a
-    página da Dra. Neiva — adicione um bloco <url> como o exemplo
+    página da Dra. Neiva —, adicione um bloco <url> como o exemplo
     abaixo, um para cada página nova. "priority" é sempre um número
-    entre 0.0 e 1.0; a home fica com 1.0, as páginas internas costumam
-    ficar entre 0.6 e 0.8.
+    entre 0.0 e 1.0; a home fica com 1.0 e as páginas internas
+    costumam ficar entre 0.6 e 0.8.
 
   <url>
-    <loc>https://www.institutoneivafernandes.com.br/ozonioterapia.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <loc>https://www.dominio-final.com.br/ozonioterapia.html</loc>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.institutoneivafernandes.com.br/sobre-neiva-fernandes.html</loc>
-    <lastmod>2026-09-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   -->
 

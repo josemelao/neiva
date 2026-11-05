@@ -21,28 +21,13 @@ header .wrap {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-}
-
-.logo {
-  font-family: var(--serif);
-  font-weight: 700;
-  font-size: 19px;
-  color: var(--verde-escuro);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo-mark {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, var(--verde-agua), var(--verde-escuro) 75%);
-  flex: none;
+  flex-wrap: wrap;
 }
 
 .voltar {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;

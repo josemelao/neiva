@@ -1,4 +1,6 @@
+# Prévia comercial — domínio definitivo ainda não registrado.
+# Ao publicar, trocar a URL do sitemap pelo domínio final.
 User-agent: *
 Allow: /
 
-Sitemap: https://www.institutoneivafernandes.com.br/sitemap.xml
+Sitemap: https://josemelao.github.io/neiva/sitemap.xml

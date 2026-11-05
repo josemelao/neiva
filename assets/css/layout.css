@@ -27,34 +27,6 @@ header.scrolled .wrap {
   height: 62px;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--serif);
-  font-weight: 700;
-  font-size: 19px;
-  color: var(--verde-escuro);
-  text-decoration: none;
-}
-
-.logo-mark {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 1.5px solid var(--verde-escuro);
-  position: relative;
-  flex: none;
-}
-
-.logo-mark::after {
-  content: '';
-  position: absolute;
-  inset: 7px;
-  border-radius: 50%;
-  background: var(--verde-agua);
-}
-
 nav ul {
   list-style: none;
   display: flex;
@@ -63,12 +35,15 @@ nav ul {
 }
 
 nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   text-decoration: none;
   color: var(--preto);
 }
 
 nav a:hover {
-  color: var(--verde-agua);
+  color: var(--verde-texto);
 }
 
 .nav-cta {
@@ -79,12 +54,16 @@ nav a:hover {
 
 .hamburger {
   display: none;
+  width: 44px;
+  height: 44px;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px;
+  padding: 0;
 }
 
 .hamburger span {
@@ -119,7 +98,7 @@ nav a:hover {
 }
 
 .hero-text-panel .eyebrow {
-  color: var(--verde-agua);
+  color: var(--verde-claro);
 }
 
 .hero-text-panel h1 {
@@ -128,6 +107,7 @@ nav a:hover {
   font-weight: 800;
   margin-bottom: 18px;
   line-height: 1.1;
+  max-width: 560px;
 }
 
 .hero .frase {
@@ -135,7 +115,7 @@ nav a:hover {
   font-style: italic;
   font-weight: 500;
   font-size: clamp(18px, 2vw, 22px);
-  color: var(--verde-agua);
+  color: var(--verde-claro);
   margin-bottom: 20px;
   line-height: 1.5;
 }
@@ -361,7 +341,7 @@ nav a:hover {
 .credencial {
   display: inline-block;
   font-size: 13px;
-  color: var(--verde-profundo);
+  color: var(--verde-texto);
   border: 1px solid var(--verde-profundo);
   padding: 6px 16px;
   border-radius: 20px;
@@ -408,10 +388,10 @@ nav a:hover {
   left: 0;
   width: 100%;
   height: 150%;
-  background-image: linear-gradient(rgba(20, 52, 43, 0.86), rgba(20, 52, 43, 0.86)), url('https://placehold.co/1600x900/1E4A3D/1E4A3D?text=+');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(79, 175, 147, .30), transparent 55%),
+    radial-gradient(circle at 82% 85%, rgba(0, 180, 190, .18), transparent 52%),
+    linear-gradient(135deg, #1B4438 0%, #163a30 58%, #123027 100%);
   pointer-events: none;
   will-change: transform;
   z-index: 0;
@@ -423,9 +403,9 @@ nav a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: var(--serif);
+  font-family: var(--display);
   font-weight: 800;
-  font-size: clamp(80px, 16vw, 180px);
+  font-size: clamp(40px, 13vw, 158px);
   color: rgba(255, 255, 255, .04);
   white-space: nowrap;
   pointer-events: none;
@@ -530,7 +510,7 @@ nav a:hover {
   content: '✓';
   position: absolute;
   left: 0;
-  color: var(--verde-vivo);
+  color: var(--verde-texto);
   font-weight: 700;
 }
 
@@ -547,7 +527,7 @@ nav a:hover {
 
 .info-list .label {
   font-size: 12.5px;
-  color: var(--verde-agua);
+  color: var(--verde-texto);
   font-weight: 600;
   min-width: 110px;
   flex: none;
@@ -556,6 +536,8 @@ nav a:hover {
 .info-list .val {
   font-size: 15px;
   color: var(--preto);
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .mapa {
@@ -584,7 +566,7 @@ footer {
 }
 
 .footer-logo {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-weight: 700;
   font-size: 19px;
   color: var(--branco);

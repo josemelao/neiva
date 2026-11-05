@@ -1,4 +1,7 @@
 // Revelação suave ao rolar a página
+const root = document.documentElement;
+root.setAttribute('data-motion-ready', '');
+
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!prefersReduced && 'IntersectionObserver' in window) {
   const revealObserver = new IntersectionObserver((entries) => {

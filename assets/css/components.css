@@ -25,7 +25,7 @@
 .area-card .icon {
   width: 30px;
   height: 30px;
-  color: var(--verde-vivo);
+  color: var(--verde-texto);
   margin-bottom: 16px;
   display: block;
   position: relative;
@@ -108,11 +108,11 @@
 
 .dif-item .num {
   position: absolute;
-  top: 2px;
-  right: 16px;
-  font-family: var(--serif);
+  top: 6px;
+  right: 14px;
+  font-family: var(--display);
   font-weight: 800;
-  font-size: 58px;
+  font-size: 46px;
   color: var(--verde-agua-claro);
   line-height: 1;
   z-index: 0;
@@ -138,6 +138,7 @@
   z-index: 1;
   font-size: 18px;
   margin: 6px 0 8px;
+  padding-right: 58px;
   color: var(--verde-profundo);
 }
 
@@ -173,10 +174,10 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto 16px;
-  font-family: var(--serif);
+  font-family: var(--display);
   font-weight: 700;
   font-size: 18px;
-  color: var(--verde-profundo);
+  color: var(--verde-texto);
 }
 
 .t-quote {
@@ -192,7 +193,7 @@
 .t-author {
   margin-top: 18px;
   font-size: 13.5px;
-  color: var(--verde-agua);
+  color: var(--verde-texto);
   font-weight: 600;
   max-width: none;
 }
@@ -204,8 +205,8 @@
   background: var(--branco);
   border: none;
   box-shadow: var(--shadow-soft);
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   font-size: 20px;
   color: var(--verde-escuro);
@@ -232,36 +233,40 @@
 .t-dots {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin-top: 28px;
+  gap: 0;
+  margin-top: 24px;
 }
 
 .t-dots button {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.t-dots button::before {
+  content: '';
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  border: none;
-  background: var(--borda);
-  padding: 0;
-  cursor: pointer;
+  background: #7F918B;
+  transition: background .2s ease, width .2s ease;
 }
 
-.t-dots button[aria-selected="true"] {
-  background: var(--verde-agua);
+.t-dots button:hover::before {
+  background: var(--verde-escuro);
 }
 
-@media (max-width:600px) {
-  .t-slide {
-    padding: 8px 40px;
-  }
-
-  .t-prev {
-    left: -2px;
-  }
-
-  .t-next {
-    right: -2px;
-  }
+.t-dots button[aria-current="true"]::before {
+  width: 20px;
+  border-radius: 999px;
+  background: var(--verde-escuro);
 }
 
 /* FAQ */
@@ -295,7 +300,7 @@
 
 .faq-q .plus {
   font-size: 20px;
-  color: var(--verde-agua);
+  color: var(--verde-texto);
   flex: none;
   transition: transform .2s ease;
 }
@@ -359,8 +364,9 @@
 
 .form-field input:focus,
 .form-field textarea:focus {
-  outline: 2px solid var(--verde-agua);
+  outline: 2px solid var(--verde-texto);
   outline-offset: 1px;
+  border-color: var(--verde-texto);
 }
 
 .form-field textarea {
@@ -395,6 +401,11 @@
   color: var(--verde-escuro);
   font-weight: 600;
   text-decoration: underline;
+}
+
+.form-optional {
+  font-weight: 400;
+  color: var(--texto-suave);
 }
 
 /* Banner de cookies (LGPD) */
@@ -468,15 +479,6 @@
 .cookie-actions .btn-outline:hover {
   background: rgba(255, 255, 255, .12);
   color: var(--branco);
-}
-
-@media (max-width:480px) {
-  .cookie-banner {
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    padding: 18px;
-  }
 }
 
 .whatsapp-float {
@@ -557,14 +559,24 @@
   }
 }
 
-/* Revelação ao rolar */
-.reveal {
+/* Fotos de demonstração: tratamento discreto para ficarem na mesma
+   temperatura de cor da marca. Ajustar/remover quando entrarem as fotos reais. */
+.hero-slide,
+.destaque-img,
+.sobre-photo,
+.form-side-img {
+  filter: saturate(.88) contrast(1.02);
+}
+
+/* Revelação ao rolar — só é ativada quando o JS inicializa (progressive enhancement).
+   Sem .js-motion no <html>, todo o conteúdo permanece visível. */
+.js-motion .reveal {
   opacity: 0;
   transform: translateY(22px);
   transition: opacity .7s ease, transform .7s ease;
 }
 
-.reveal.visible {
+.js-motion .reveal.visible {
   opacity: 1;
   transform: none;
 }
@@ -618,12 +630,12 @@
 }
 
 /* Fade de imagens quando carregam (usar em <img class="fade-in">) */
-img.fade-in {
+.js-motion img.fade-in {
   opacity: 0;
   transition: opacity .6s ease;
 }
 
-img.fade-in.loaded {
+.js-motion img.fade-in.loaded {
   opacity: 1;
 }
 
@@ -655,3 +667,13 @@ img.fade-in.loaded {
   margin-top: 14px;
   font-size: 14px;
 }
+
+.form-status.is-success {
+  color: var(--verde-escuro);
+}
+
+.form-status a {
+  color: var(--verde-escuro);
+  font-weight: 600;
+}
+

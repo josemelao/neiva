@@ -5,6 +5,10 @@
   --verde-agua: #4FAF93;
   --verde-profundo: #388275;
   --verde-vivo: #00B4BE;
+  /* Texto com contraste AA sobre fundos claros (branco, creme e agua claro). */
+  --verde-texto: #2A7263;
+  /* Texto com contraste AA sobre verde escuro e preto (hero, rodapé). */
+  --verde-claro: #9BD8C5;
   --verde-agua-claro: #EAF4F0;
   --branco: #FEFEFC;
   --preto: #182420;
@@ -16,8 +20,7 @@
   --radius-btn: 10px;
   --shadow-soft: 0 10px 28px -12px rgba(30, 74, 61, .16);
   --shadow-soft-hover: 0 18px 36px -14px rgba(30, 74, 61, .22);
-  --serif: 'Poppins', sans-serif;
-  --script: 'Caveat', cursive;
+  --display: 'Poppins', sans-serif;
   --quote: 'Lora', serif;
   --sans: 'Inter', sans-serif;
 }
@@ -59,7 +62,7 @@ a {
 h1,
 h2,
 h3 {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-weight: 700;
   line-height: 1.1;
   color: var(--verde-escuro);
@@ -85,7 +88,7 @@ p {
   font-family: var(--sans);
   font-size: 13px;
   letter-spacing: .02em;
-  color: var(--verde-vivo);
+  color: var(--verde-texto);
   font-weight: 600;
   margin-bottom: 10px;
 }
@@ -143,6 +146,41 @@ p {
   transform: translateY(-2px);
 }
 
+/* Foco visível em qualquer fundo: currentColor acompanha o texto do elemento,
+   então funciona no branco, no creme e nas seções verde-escuras. */
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* Marca e símbolo. A máscara deixa o símbolo herdar a cor do texto,
+   então o mesmo arquivo serve para header e rodapé. */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--verde-escuro);
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 30px;
+  height: 30px;
+  flex: none;
+  background: currentColor;
+  -webkit-mask: url('../img/logo-mark.svg') center / contain no-repeat;
+  mask: url('../img/logo-mark.svg') center / contain no-repeat;
+}
+
+/* Endereços de e-mail não têm ponto de quebra natural: permitir a quebra
+   evita estouro horizontal em telas estreitas. */
+a[href^="mailto:"] {
+  overflow-wrap: anywhere;
+}
+
 /* Utilitários */
 .delay-1 {
   transition-delay: .1s;
@@ -154,8 +192,4 @@ p {
 
 .wrap--narrow {
   max-width: 760px;
-}
-
-.honeypot {
-  display: none;
 }

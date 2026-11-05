@@ -1,39 +1,44 @@
-// Envio do formulário de contato (Web3Forms) sem recarregar a página
+// Formulário de contato: monta a mensagem e abre o WhatsApp.
+// Não há backend — a conversa é iniciada pelo próprio visitante, então
+// nenhum dado do formulário é armazenado ou transmitido pelo site.
+const WHATSAPP_NUMERO = '5561981729598';
+
 const formContato = document.getElementById('form-contato');
+
 if (formContato) {
-  formContato.addEventListener('submit', async (e) => {
+  formContato.addEventListener('submit', (e) => {
     e.preventDefault();
+
     const status = document.getElementById('form-status');
-    const btn = formContato.querySelector('button[type="submit"]');
-    const key = formContato.access_key.value;
-    if (key === 'COLE_SUA_CHAVE_WEB3FORMS_AQUI') {
-      status.textContent = 'Configuração pendente: insira a chave do Web3Forms no formulário.';
-      status.style.color = '#B4453A';
-      return;
-    }
-    btn.disabled = true;
-    status.textContent = 'Enviando...';
-    status.style.color = 'var(--texto-suave)';
-    try {
-      const res = await fetch(formContato.action, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(formContato)
-      });
-      const data = await res.json();
-      if (data.success) {
-        status.textContent = 'Mensagem enviada. Em breve entraremos em contato.';
-        status.style.color = 'var(--verde-escuro)';
-        formContato.reset();
-      } else {
-        status.textContent = 'Não foi possível enviar agora. Tente novamente ou fale pelo WhatsApp.';
-        status.style.color = '#B4453A';
+    const dados = new FormData(formContato);
+    const valor = (campo) => (dados.get(campo) || '').toString().trim();
+
+    const nome = valor('nome');
+    const whatsapp = valor('whatsapp');
+    const email = valor('email');
+    const mensagem = valor('mensagem');
+
+    const linhas = [
+      'Olá! Vim pelo site e gostaria de solicitar informações.',
+      '',
+      `Nome: ${nome}`,
+      `WhatsApp: ${whatsapp}`,
+    ];
+    if (email) linhas.push(`E-mail: ${email}`);
+    if (mensagem) linhas.push('', `Mensagem: ${mensagem}`);
+
+    const url = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(linhas.join('\n'))}`;
+    const novaAba = window.open(url, '_blank');
+
+    if (novaAba) {
+      novaAba.opener = null;
+      if (status) {
+        status.textContent = 'Abrimos o WhatsApp em outra aba com sua mensagem pronta. É só enviar.';
+        status.classList.add('is-success');
       }
-    } catch (err) {
-      status.textContent = 'Falha de conexão. Tente novamente ou fale pelo WhatsApp.';
-      status.style.color = '#B4453A';
-    } finally {
-      btn.disabled = false;
+    } else {
+      // Pop-up bloqueado: segue na mesma aba para não perder o contato.
+      window.location.href = url;
     }
   });
 }

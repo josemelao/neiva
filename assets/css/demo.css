@@ -1,0 +1,55 @@
+/* Aviso de demonstração.
+   Temporário: remover este arquivo, o <link rel="stylesheet"> correspondente
+   e o bloco .demo-banner das páginas quando o site for publicado. */
+
+.demo-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: #F3EFE4;
+  border-bottom: 1px solid rgba(30, 74, 61, .12);
+  color: var(--texto-suave);
+  font-size: 13px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.demo-banner-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(30, 74, 61, .09);
+  color: var(--verde-escuro);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.demo-banner-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--verde-agua);
+}
+
+@media (max-width: 600px) {
+  .demo-banner {
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .demo-banner-tag {
+    padding: 2px 8px;
+    font-size: 10px;
+  }
+}
